@@ -1,0 +1,41 @@
+apply plugin: 'java'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+dependencies {
+    compile 'com.google.auto.service:auto-service:1.0-rc2'
+    compile 'com.squareup:javapoet:1.7.0'
+    compile project(':dlsharedpreferences-api')
+}
+
+ext {
+    bintrayRepo = 'weiyf'
+    bintrayName = 'DLSharedPreferences-compiler'
+    publishedGroupId = 'cn.weiyf.dlsharedpreferences.compiler'
+    libraryName = 'DLSharedPreferencesCompiler'
+    artifact = 'dlsharedpreferences-compiler'
+
+    libraryDescription = 'DLSharedPreferencesCompiler'
+
+    siteUrl = 'https://weiyf.cn'
+    gitUrl = 'https://git.oschina.net/weiyf/DLSharedPreferencesCompiler.git'
+
+    libraryVersion = '1.0.01'
+
+    developerId = 'weiyf'
+    developerName = 'weiyf'
+    developerEmail = 'admin@weiyf.cn'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}

@@ -1,0 +1,55 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+}
+
+idea {
+    module{
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
+}
+
+dependencies {
+    provided 'com.google.android:android:4.1.1.4'
+}
+
+ext {
+    bintrayRepo = 'weiyf'
+    bintrayName = 'DLSharedPreferences-api'
+
+    publishedGroupId = 'cn.weiyf.dlsharedpreferences.api'
+    libraryName = 'DLSharedPreferencesApi'
+    artifact = 'dlsharedpreferences-api'
+
+    libraryDescription = 'DLSharedPreferencesApi'
+
+    siteUrl = 'https://weiyf.cn'
+    gitUrl = 'https://git.oschina.net/weiyf/DLSharedPreferences.git'
+
+    libraryVersion = '1.0.01'
+
+    developerId = 'weiyf'
+    developerName = 'weiyf'
+    developerEmail = 'admin@weiyf.cn'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}
