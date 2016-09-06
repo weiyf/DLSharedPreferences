@@ -9,5 +9,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PrefUtils_ prefUtils_ = PrefUtils_.create(this);
+        Boolean aBoolean = prefUtils_.isLogin().get(false);
     }
 }
